@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@500&display=swap");
+
+main {
+  height: 200vh;
+  background-color: #2e255c;
+  align-items: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.connectButtonLabel {
+  color: #221b44;
+  font-family: "Press Start 2P", cursive;
+}
+.homeContainer {
+  display: flex;
+}
+
+.links {
+  position: absolute;
+  right: 0;
+  width: 30vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  align-items: center;
+}
+.link {
+  color: #d3132d;
+  cursor: pointer;
+  user-select: none;
+  font-family: "Press Start 2P", cursive;
+  transition: 0.3s;
+  padding: 0.3rem 0;
+  margin-top: 20vh;
+  border: solid 0.3rem transparent;
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+}
+
+.link:hover {
+  border-bottom: solid 0.3rem #d3132d;
+}
