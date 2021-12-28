@@ -13,7 +13,6 @@ import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDisconnectButton } from "@solana/wallet-adapter-material-ui";
 
 import Scene1 from "../components/Three/Scene1";
-import Scene2 from "../components/Three/Scene2";
 import WalletConnectButton from "../components/WalletConnectButton";
 
 import {
@@ -50,8 +49,6 @@ const Home = (props: HomeProps) => {
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
-
-  const textRef = useRef<HTMLDivElement>(null);
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -230,23 +227,23 @@ const Home = (props: HomeProps) => {
             <div className="homeContainer">
               <Scene1 />
               <div className="links">
-                <p
-                  className="link"
-                  onClick={() =>
-                    textRef.current!.scrollIntoView({
-                      block: "end",
-                      inline: "nearest",
-                      behavior: "smooth",
-                    })
-                  }
-                >
+                <p className="link" onClick={() => console.log("clicked")}>
                   Roadmap
                 </p>
                 <WalletConnectButton>Connect Wallet</WalletConnectButton>
+
+                <a
+                  href="https://discord.gg/mE6bqYbfEd"
+                  style={{
+                    textDecoration: "none",
+                    textDecorationColor: "none",
+                  }}
+                  target="_blank"
+                  className="link"
+                >
+                  Discord
+                </a>
               </div>
-            </div>
-            <div ref={textRef}>
-              <Scene2 />
             </div>
           </>
         ) : (

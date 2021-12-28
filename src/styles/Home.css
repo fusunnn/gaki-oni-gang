@@ -3,15 +3,11 @@
 
 main {
   height: 200vh;
-  background-color: #2e255c;
+  background-color: black;
   align-items: center;
   overflow: auto;
   display: flex;
   flex-direction: column;
-}
-.connectButtonLabel {
-  color: #221b44;
-  font-family: "Press Start 2P", cursive;
 }
 .homeContainer {
   display: flex;
