@@ -27,6 +27,9 @@ import Scene from "../components/Scene";
 import { SiDiscord } from "react-icons/si";
 import { FaTwitter, FaWallet, FaRoad } from "react-icons/fa";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
@@ -215,6 +218,12 @@ const Home = (props: HomeProps) => {
     props.connection,
   ]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 300,
+    });
+  }, []);
+
   function handleDiscordClick() {
     window.open("https://discord.gg/mE6bqYbfEd", "_blank");
   }
@@ -253,7 +262,7 @@ const Home = (props: HomeProps) => {
                 width: "100vw",
               }}
             >
-              <div className="nav">
+              <div className="nav" data-aos="fade-left">
                 <div className="icon-container roadmap">
                   <FaRoad color="white" size="1.6rem" className="icon" />
                 </div>
@@ -282,8 +291,10 @@ const Home = (props: HomeProps) => {
               <div className="oni-example-container">examples des oni</div>
             </div>
             <div className="info-container">
-              <p className="info-title">What is Gaki Oni?</p>
-              <p className="info-content">
+              <p className="info-title" data-aos="fade-up">
+                What is Gaki Oni?
+              </p>
+              <p className="info-content" data-aos="fade-up">
                 info info info info info info info info info info info info info
                 info info info info info info info info info info info info info
                 info info info info info info info info info info info info info
