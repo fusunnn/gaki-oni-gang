@@ -12,7 +12,6 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDisconnectButton } from "@solana/wallet-adapter-material-ui";
 
-import Scene1 from "../components/Three/Scene1";
 import WalletConnectButton from "../components/WalletConnectButton";
 
 import {
@@ -22,6 +21,11 @@ import {
   mintOneToken,
   shortenAddress,
 } from "../logic/candy-machine";
+
+import Scene from "../components/Scene";
+
+import { SiDiscord } from "react-icons/si";
+import { FaTwitter, FaWallet, FaRoad } from "react-icons/fa";
 
 const CounterText = styled.span``; // add your styles here
 
@@ -89,7 +93,9 @@ const Home = (props: HomeProps) => {
   const onMint = async () => {
     try {
       let res = await fetch(
-        `${api_url}/whitelisted/member/${(wallet as anchor.Wallet).publicKey.toString()}`,
+        `${api_url}/whitelisted/member/${(
+          wallet as anchor.Wallet
+        ).publicKey.toString()}`,
         { method: "GET" }
       );
       const res_json = await res.json();
@@ -126,9 +132,9 @@ const Home = (props: HomeProps) => {
           });
           const to_send = await JSON.stringify({ reserve: res_num - 1 });
           await fetch(
-            `${api_url}/whitelisted/update/${(wallet as anchor.Wallet).publicKey.toString()}/${
-              process.env.REACT_APP_SECRET_KEY
-            }`,
+            `${api_url}/whitelisted/update/${(
+              wallet as anchor.Wallet
+            ).publicKey.toString()}/${process.env.REACT_APP_SECRET_KEY}`,
             {
               method: "PUT",
               headers: {
@@ -190,7 +196,9 @@ const Home = (props: HomeProps) => {
         const balance = await props.connection.getBalance(wallet.publicKey);
         setBalance(balance / LAMPORTS_PER_SOL);
         const data = await fetch(
-          `${api_url}/whitelisted/member/${(wallet as anchor.Wallet).publicKey.toString()}`
+          `${api_url}/whitelisted/member/${(
+            wallet as anchor.Wallet
+          ).publicKey.toString()}`
         );
         if (data.status.toString() !== "404") {
           SetWhitelisted(true);
@@ -206,6 +214,13 @@ const Home = (props: HomeProps) => {
     props.candyMachineId,
     props.connection,
   ]);
+
+  function handleDiscordClick() {
+    window.open("https://discord.gg/mE6bqYbfEd", "_blank");
+  }
+  function handleTwitterClick() {
+    window.open("https://twitter.com", "_blank");
+  }
 
   return (
     <main>
@@ -224,26 +239,61 @@ const Home = (props: HomeProps) => {
       <MintContainer>
         {!wallet ? (
           <>
-            <div className="homeContainer">
-              <Scene1 />
-              <div className="links">
-                <p className="link" onClick={() => console.log("clicked")}>
-                  Roadmap
-                </p>
-                <WalletConnectButton>Connect Wallet</WalletConnectButton>
+            <div
+              className="home-container"
+              style={{
+                backgroundImage:
+                  "url(" +
+                  "https://i.ytimg.com/vi/CEgS29TPS7Y/maxresdefault.jpg" +
+                  ")",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                height: "100vh",
+                width: "100vw",
+              }}
+            >
+              <div className="nav">
+                <div className="icon-container roadmap">
+                  <FaRoad color="white" size="1.6rem" className="icon" />
+                </div>
+                <WalletConnectButton>
+                  <div className="icon-container wallet">
+                    <FaWallet color="white" size="1.7rem" className="icon" />
+                  </div>
+                </WalletConnectButton>
 
-                <a
-                  href="https://discord.gg/mE6bqYbfEd"
-                  style={{
-                    textDecoration: "none",
-                    textDecorationColor: "none",
-                  }}
-                  target="_blank"
-                  className="link"
+                <div
+                  className="icon-container discord"
+                  onClick={() => handleDiscordClick()}
                 >
-                  Discord
-                </a>
+                  <SiDiscord color="white" size="2rem" />
+                </div>
+                <div
+                  className="icon-container twitter"
+                  onClick={() => handleTwitterClick()}
+                >
+                  <FaTwitter color="white" size="1.7rem" className="icon" />
+                </div>
               </div>
+              <Scene />
+            </div>
+            <div className="example-container">
+              <div className="oni-example-container">examples des oni</div>
+            </div>
+            <div className="info-container">
+              <p className="info-title">What is Gaki Oni?</p>
+              <p className="info-content">
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+                info info info info info info info info info info info info info
+              </p>
             </div>
           </>
         ) : (

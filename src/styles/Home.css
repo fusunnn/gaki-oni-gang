@@ -1,42 +1,101 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@500&display=swap");
 
+* {
+  /* overflow-x: hidden; */
+}
 main {
-  height: 200vh;
-  background-color: black;
-  align-items: center;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
+  overflow-y: auto;
+  background-color: white;
 }
-.homeContainer {
+.nav {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  width: 40rem;
+  height: 5.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 1.3rem;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  backdrop-filter: blur(5px);
 }
 
-.links {
-  position: absolute;
-  right: 0;
-  width: 30vw;
-  height: 100vh;
+.home-container {
   display: flex;
-  flex-direction: column;
-  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+.icon-container {
+  cursor: pointer !important;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
-.link {
-  color: #d3132d;
+
+.icon {
   cursor: pointer;
-  user-select: none;
-  font-family: "Press Start 2P", cursive;
-  transition: 0.3s;
-  padding: 0.3rem 0;
-  margin-top: 20vh;
-  border: solid 0.3rem transparent;
+}
+
+.discord {
+  background-color: #5865f2;
+}
+.twitter {
+  background-color: #1da1f2;
+}
+
+.wallet {
+  background-color: #2d2d2d;
+}
+.wallet-connect {
+  text-decoration: none;
   background-color: transparent;
   outline: none;
-  font-size: 1rem;
+  border: none;
 }
 
-.link:hover {
-  border-bottom: solid 0.3rem #d3132d;
+.roadmap {
+  background-color: #787878;
+}
+.example-container {
+  height: 45vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  /* overflow-x: hidden; */
+}
+.oni-example-container {
+  height: 60vh;
+  width: 23vw;
+  background-color: #6411ff;
+  border-radius: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10vh;
+  font-weight: bold;
+}
+.info-container {
+  height: 80vh;
+  width: 100vw;
+  background-color: #6666d5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 2rem;
+  margin-top: 5rem;
+}
+.info-content {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.2rem;
+  width: 40vw;
 }

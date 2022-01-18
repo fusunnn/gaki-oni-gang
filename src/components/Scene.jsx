@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { softShadows, OrbitControls } from "@react-three/drei";
 
-import PressStart2P from "../../assets/PressStart2P.json";
+import PressStart2P from "../assets/PressStart2P.json";
 
 softShadows();
 
@@ -17,7 +17,6 @@ const Text = () => {
     height: 0.2,
   };
 
-  useFrame(() => (mesh.current.rotation.y += 0.005));
   return (
     <group ref={mesh}>
       <mesh
@@ -26,7 +25,7 @@ const Text = () => {
         onClick={() => console.log("hi")}
       >
         <textGeometry attach="geometry" args={["Gaki Oni Gang", textOptions]} />
-        <meshStandardMaterial attach="material" color={0xff0059} />
+        <meshStandardMaterial attach="material" color={0xffffff} />
       </mesh>
     </group>
   );
@@ -38,16 +37,16 @@ export default function Scene1() {
       <Canvas
         style={{
           height: "100vh",
-          width: "100vw",
+          width: "50vw",
           zIndex: 0,
         }}
-        camera={{ position: [0, 4, 10] }}
+        camera={{ position: [0, -1, 10] }}
         shadows
       >
-        <ambientLight intensity={0.6} color={0xcccccc} />
+        <ambientLight intensity={1} color={0xcccccc} />
         <directionalLight
-          position={[0, 10, -7]}
-          intensity={0.4}
+          position={[0, 4, 10]}
+          intensity={1}
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
           shadow-camera-far={50}
@@ -59,15 +58,15 @@ export default function Scene1() {
         />
         <group>
           <mesh
-            receiveShadow
+            // receiveShadow
             rotation={[-Math.PI / 2, 0, 0]}
             position={[0, -3, 0]}
           >
             <planeBufferGeometry attach="geometry" args={[100, 100]} />
             <shadowMaterial attach="material" opacity={0.3} />
           </mesh>
+          <Text />
         </group>
-        <Text />
         <OrbitControls />
       </Canvas>
     </>

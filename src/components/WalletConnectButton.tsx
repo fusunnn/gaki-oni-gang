@@ -4,7 +4,7 @@ import { ButtonProps } from "@material-ui/core";
 import { useWalletDialog } from "@solana/wallet-adapter-material-ui";
 
 const WalletDialogButton: FC<ButtonProps> = ({
-  children = "Select Wallet",
+  children,
 
   onClick,
 }) => {
@@ -19,7 +19,7 @@ const WalletDialogButton: FC<ButtonProps> = ({
   );
 
   return (
-    <button onClick={handleClick} className="link">
+    <button onClick={handleClick} className="wallet-connect">
       {children}
     </button>
   );
